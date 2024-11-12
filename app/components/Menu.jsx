@@ -7,7 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { MenuController } from "./MenuController";
 
 export default function Menu() {
-  const [categoria, setCategoria] = useState(0);
+  const [categoria, setCategoria] = useState([]);
 
   const fetchCategorias = async () => {
     try {
@@ -20,21 +20,23 @@ export default function Menu() {
 
   useEffect(() => {
     fetchCategorias();
-  });
+  }, []);
 
   return (
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
-          <NavDropdown title="Home" id="basic-nav-dropdown">
+          <NavDropdown title="Contactos por categoria">
             <NavDropdown.Item href={`/dashboard/${0}`}>Todos los contactos</NavDropdown.Item>
-            <NavDropdown title="Contactos por categoria">
-              {/* {categoria.map((item) => (
-                <NavDropdown.Item href={`/dashboard/${item.idtcategoria}`} key={item.idtcategoria}>
-                  {item.decripcion}
+            {categoria.length > 0 ? (
+              categoria.map((item) => (
+                <NavDropdown.Item key={item.idtCategoria} href={`/dashboard/${item.idtCategoria}`}>
+                  {item.descripcion}
                 </NavDropdown.Item>
-              ))} */}
-            </NavDropdown>
+              ))
+            ) : (
+              <NavDropdown.Item>Sin categoria</NavDropdown.Item>
+            )}
           </NavDropdown>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

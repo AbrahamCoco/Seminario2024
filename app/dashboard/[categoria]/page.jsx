@@ -3,7 +3,7 @@ import Tablas from "@/app/components/Tablas";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ContactoController } from "@/app/dashboard/[categoria]/categoriaController";
-import { Button } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 
 export default function Categoria() {
   const params = useParams();
@@ -29,12 +29,26 @@ export default function Categoria() {
   }, [categoria]);
 
   if (data == null) {
-    return <h1>Cargando...</h1>;
+    return (
+      <Container>
+        <Row>
+          <Col md={12}>
+            <h1>Cargando...</h1>
+          </Col>
+        </Row>
+      </Container>
+    );
   }
 
   return (
     <>
-      <Tablas data={data} />
+      <Container>
+        <Row>
+          <Col md={12}>
+            <Tablas data={data} />
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }

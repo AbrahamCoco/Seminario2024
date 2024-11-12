@@ -1,8 +1,7 @@
+"use client";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import Tablas from "../components/Tablas";
 
 export default function Dashboard() {
-  const datosForm = [];
   return (
     <Container>
       <h1>Agregar contacto</h1>
