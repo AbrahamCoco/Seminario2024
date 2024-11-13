@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Button, Modal, NavDropdown } from "react-bootstrap";
+import { NavDropdown } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -26,7 +26,8 @@ export default function Menu() {
     <>
       <Navbar expand="lg" className="bg-body-tertiary">
         <Container>
-          <NavDropdown title="Contactos por categoria">
+          <NavDropdown title="Home">
+            <NavDropdown.Item href={`/dashboard`}>Agregar contacto</NavDropdown.Item>
             <NavDropdown.Item href={`/dashboard/${0}`}>Todos los contactos</NavDropdown.Item>
             {categoria.length > 0 ? (
               categoria.map((item) => (
@@ -41,7 +42,7 @@ export default function Menu() {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/dashboard/categories">Categories</Nav.Link>
+              <Nav.Link href="/dashboard/categories">Categorias</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
