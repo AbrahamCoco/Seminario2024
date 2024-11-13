@@ -16,4 +16,16 @@ export class CategoriasController {
       Utils.swalError("Error al mandar la peticion");
     }
   }
+
+  static async deleteCategoria(id) {
+    try {
+      response = await fetch(`http://localhost:8080/categorias/delete?id=${id}`, {
+        method: "GET",
+      });
+      Utils.swalSuccess("Categoria eliminada correctamente");
+      return response;
+    } catch (error) {
+      Utils.swalError("Error al mandar la peticion");
+    }
+  }
 }

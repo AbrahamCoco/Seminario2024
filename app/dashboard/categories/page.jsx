@@ -25,10 +25,20 @@ export default function Categories() {
       const response = await CategoriasController.addCategoria(data);
       fetchCategorias();
       setDescripcion("");
-      await MenuController.updateMenu(); // Actualizar el componente Menu
+      await MenuController.updateMenu();
       return response;
     } catch (error) {
       return error;
+    }
+  };
+
+  const eliminarCategoria = (id) => async () => {
+    try {
+      await CategoriasController.deleteCategoria(id);
+      fetchCategorias();
+      await MenuController.updateMenu();
+    } catch (error) {
+      console.log("Error al eliminar la categoria");
     }
   };
 
@@ -64,7 +74,7 @@ export default function Categories() {
                     <td>{categoria.idtCategoria}</td>
                     <td>{categoria.descripcion}</td>
                     <td>
-                      <Button variant="danger" href={`/dashboard/categories/${categoria.idtCategoria}`}>
+                      <Button variant="danger" onClick={eliminarCategoria(categoria.idtCategoria)}>
                         Eliminar
                       </Button>
                     </td>

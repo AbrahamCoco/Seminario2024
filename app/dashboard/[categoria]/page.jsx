@@ -45,7 +45,7 @@ export default function Categoria() {
       <Container>
         <Row>
           <Col md={12}>
-            <Tablas data={data} />
+            <Tablas data={data} fetchData={fetchData} />
           </Col>
         </Row>
       </Container>
